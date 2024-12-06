@@ -78,6 +78,23 @@ public class Matrix<T> {
         return match.equals(value);
     }
 
+    public Point getSize() {
+        return new Point(matrix[0].length, matrix.length);
+    }
+    public void set(Point point, T t) {
+        matrix[point.y][point.x] = t;
+    }
+
+    public void print() {
+        for (int y = 0; y < matrix.length; y++) {
+            for (int x = 0; x < matrix[y].length; x++) {
+                System.out.print(matrix[y][x]);
+            }
+            System.out.println("");
+        }
+
+    }
+
     public static Point addPoints(Point p1, Point p2) {
         return new Point(p1.x + p2.x, p1.y + p2.y);
     }
