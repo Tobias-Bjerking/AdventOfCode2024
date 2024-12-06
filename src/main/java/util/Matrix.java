@@ -43,6 +43,10 @@ public class Matrix<T> {
                 .toList();
     }
 
+    public List<Point> findMatch(T match) {
+        return findMatches(List.of(match));
+    }
+
     public List<Point> checkNeighbours(Point position, List<T> match) {
         if (match.isEmpty())
             return List.of(position);
@@ -67,6 +71,10 @@ public class Matrix<T> {
             }
         }
         return true;
+    }
+
+    public boolean checkDirection(Point position, Point direction, T match) {
+        return checkDirection(position, direction, List.of(match));
     }
 
     public boolean checkPosition(Point position, T match) {
