@@ -1,9 +1,7 @@
 package util;
 
 import java.awt.Point;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 public class Matrix<T> {
 
@@ -45,6 +43,14 @@ public class Matrix<T> {
 
     public List<Point> findMatch(T match) {
         return findMatches(List.of(match));
+    }
+
+    public Set<T> findTypes() {
+        Set<T> types = new HashSet<>();
+        for (int y = 0; y < matrix.length; y++) {
+            types.addAll(Arrays.asList(matrix[y]));
+        }
+        return types;
     }
 
     public List<Point> checkNeighbours(Point position, List<T> match) {
@@ -105,6 +111,10 @@ public class Matrix<T> {
 
     public static Point addPoints(Point p1, Point p2) {
         return new Point(p1.x + p2.x, p1.y + p2.y);
+    }
+
+    public static Point subtractPoints(Point p1, Point p2) {
+        return new Point(p1.x - p2.x, p1.y - p2.y);
     }
 
 }
