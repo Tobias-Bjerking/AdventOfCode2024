@@ -117,4 +117,8 @@ public class Matrix<T> {
         return new Point(p1.x - p2.x, p1.y - p2.y);
     }
 
+    public boolean hasPoint(Point point) {
+        return point.x >= 0 && point.x < getSize().x && point.y >= 0 && point.y < getSize().y;
+    }
+
 }

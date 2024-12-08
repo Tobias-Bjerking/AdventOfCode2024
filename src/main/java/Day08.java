@@ -19,7 +19,7 @@ public class Day08 {
                     Point diff = Matrix.subtractPoints(antenna, comparing);
                     if (!(diff.x == 0 && diff.y == 0)) {
                         Point antinode = Matrix.addPoints(antenna, diff);
-                        if (antinode.x >= 0 && antinode.x < matrix.getSize().x && antinode.y >= 0 && antinode.y < matrix.getSize().y) {
+                        if (matrix.hasPoint(antinode)) {
                             antinodes.add(antinode);
                         }
                     }
@@ -44,7 +44,7 @@ public class Day08 {
                     Point diff = Matrix.subtractPoints(antenna, comparing);
                     if (!(diff.x == 0 && diff.y == 0)) {
                         Point antinode = Matrix.addPoints(antenna, diff);
-                        while (antinode.x >= 0 && antinode.x < matrix.getSize().x && antinode.y >= 0 && antinode.y < matrix.getSize().y) {
+                        while (matrix.hasPoint(antinode)) {
                             antinodes.add(antinode);
                             antinode = Matrix.addPoints(antinode, diff);
                         }

@@ -11,7 +11,7 @@ public class Day06 {
         HashMap<Point, List<Point>> visited = new HashMap<>();
         Point position = matrix.findMatch('^').getFirst();
         Point direction = Matrix.NORTH;
-        while (position.x > 0 && position.x < matrix.getSize().x && position.y > 0 && position.y < matrix.getSize().y) {
+        while (matrix.hasPoint(position)) {
             if (matrix.checkDirection(position, direction, '#')) {
                 direction = turnRight(direction);
             } else {
