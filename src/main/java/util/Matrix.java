@@ -16,6 +16,7 @@ public class Matrix<T> {
     public static final Point WEST = new Point(-1, 0);
     public static final Point NORTH_WEST = new Point(-1, -1);
     public static final List<Point> DIRECTIONS = List.of(NORTH, NORTH_EAST, EAST, SOUTH_EAST, SOUTH, SOUTH_WEST, WEST, NORTH_WEST);
+    public static final List<Point> DIRECTIONS_NON_DIAGONAL = List.of(NORTH, EAST, SOUTH, WEST);
     public static final List<Point> CORNERS = List.of(NORTH_EAST, SOUTH_EAST, SOUTH_WEST, NORTH_WEST);
 
     public Matrix(T[][] matrix) {
@@ -53,16 +54,24 @@ public class Matrix<T> {
         return types;
     }
 
-    public List<Point> checkNeighbours(Point position, List<T> match) {
+    private List<Point> checkNeighbours(Point position, List<T> match, List<Point> directions) {
         if (match.isEmpty())
             return List.of(position);
         List<Point> foundMatchDirections = new ArrayList<>();
-        for (Point direction : DIRECTIONS) {
+        for (Point direction : directions) {
             if (checkDirection(position, direction, match)) {
                 foundMatchDirections.add(direction);
             }
         }
         return foundMatchDirections;
+    }
+
+    public List<Point> checkNeighbours(Point position, List<T> match) {
+        return checkNeighbours(position, match, DIRECTIONS);
+    }
+
+    public List<Point> checkNeighboursNonDiagonal(Point position, List<T> match) {
+        return checkNeighbours(position, match, DIRECTIONS_NON_DIAGONAL);
     }
 
     public boolean checkDirection(Point position, Point direction, List<T> match) {
