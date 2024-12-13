@@ -130,4 +130,11 @@ public class Matrix<T> {
         return point.x >= 0 && point.x < getSize().x && point.y >= 0 && point.y < getSize().y;
     }
 
+    public static Point turnRight(Point direction) {
+        return new Point(-direction.y, direction.x);
+    }
+    public static Point turnLeft(Point direction) {
+        return new Point(direction.y, -direction.x);
+    }
+
 }

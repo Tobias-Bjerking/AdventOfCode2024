@@ -13,7 +13,7 @@ public class Day06 {
         Point direction = Matrix.NORTH;
         while (matrix.hasPoint(position)) {
             if (matrix.checkDirection(position, direction, '#')) {
-                direction = turnRight(direction);
+                direction = Matrix.turnRight(direction);
             } else {
                 if (visited.containsKey(position)) {
                     if (visited.get(position).contains(direction)) {
@@ -44,10 +44,6 @@ public class Day06 {
             }
         }
         return found.size();
-    }
-
-    private static Point turnRight(Point direction) {
-        return new Point(-direction.y, direction.x);
     }
 
     public static void main(String[] args) {
